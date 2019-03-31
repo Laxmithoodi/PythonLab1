@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          rel="stylesheet">
+    <title>My FirstBlog page</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar"
+                    data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My FirstBlog</a>
+        </div>
+    </div>
+</nav>
+    <form method="POST" action="/">
+       <textarea class="form-control" name="webblog" placeholder="Enter a comment"></textarea>
+      <!-- <input type="submit" value="Submit"> -->
+      <input type="submit" class="btn btn-success" value="Post comment">
+    </form>
+    <h2>Submitted Comments</h2>
+    <table width="70%">
+      {% for comment in comments %}
+        <tr>
+          <td width="14%">
+            Posted Comments
+          </td>
+          <td width="80%">
+            <form method="POST" action="./update">
+              <input type="hidden" value="{{comment.webblog}}" name="oldwebblog" class="form-control">
+              <input type="text" value="{{comment.webblog}}" name="newwebblog" class="form-control" >
+            </form>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
